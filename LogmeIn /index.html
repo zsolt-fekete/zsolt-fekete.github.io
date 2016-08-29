@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="index.css">
+  </head>
+  <body>
+    <header>
+    </header>
+    <main>
+      <h1> Tic Tac Toe </h1>
+      <div class="game-container">
+        <div class="gamescreen">
+          <table class="board">
+            <tr>
+              <td id="a1"></td>
+              <td id="a2"></td>
+              <td id="a3"></td>
+            </tr>
+            <tr>
+              <td id="b1"></td>
+              <td id="b2"></td>
+              <td id="b3"></td>
+            </tr>
+            <tr>
+              <td id="c1"></td>
+              <td id="c2"></td>
+              <td id="c3"></td>
+            </tr>
+          </table>
+          <p class="level-text">Level:</p>
+        </div>
+      </div>
+      <div class="bottom-container">
+        <div class="button-container">
+          <div class="level-container">
+            <button class="level left" data-level="easy">Easy</button>
+            <button class="level" data-level="medium">Medium</button>
+            <button class="level right" data-level="hard">Hard</button>
+          </div>
+          <button class="restart">Restart</button>
+        </div>
+        <div class="profile-container">
+          <img src="assets/zsolt.png" alt="Zsolt" class="profile"/>
+          <p class="name" >Created by:  Zsolt Fekete</p>
+        </div>
+      </div>
+    </main>
+    <div class="end-screen display">
+      <h2></h2>
+      <div class="button-container">
+        <button class="restart new-game">New Game</button>
+        <div class="level-container-end">
+          <button id="easy" class="level left" data-level="easy">Easy</button>
+          <button id="medium" class="level" data-level="medium" >Medium</button>
+          <button id="hard" class="level right" data-level="hard">Hard</button>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script src="game.js"></script>
+  <script src="data.js"></script>
+  <script src="display.js"></script>
+  <script src="playerMovments.js"></script>
+  <script src="computerMovments.js"></script>
+  <script src="index.js"></script>
+</html>

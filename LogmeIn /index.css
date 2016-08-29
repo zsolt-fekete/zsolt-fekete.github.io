@@ -1,0 +1,168 @@
+
+body {
+  min-width: 800px;
+}
+
+h1, h2 {
+  height: 50px;
+  text-align: center;
+  color: #4169E1;
+}
+
+h2 {
+  margin-top: 20px;
+}
+
+p {
+  display: inline;
+}
+
+main {
+  width: 90%;
+  margin: 0 auto;
+}
+
+button {
+  background: transparent no-repeat;
+  border:none;
+  outline: none;
+  cursor: pointer;
+  height: 40px;
+  font-size: 18px;
+  background-color: #4169E1;
+  color: white;
+  margin: 0 auto;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+td + td,
+
+th + th {
+  border-left: 5px solid white;
+}
+tr + tr {
+  border-top: 5px solid white;
+}
+
+td {
+   height: 120px;
+   width: 120px;
+   text-align: center;
+   font-family: sans-serif;
+   font-size: 40pt;
+   text-transform: uppercase;
+   color: #4169E1;
+}
+
+.board {
+  margin: 0 auto;
+}
+
+.gamescreen {
+  margin: 0 auto;
+  padding-top: 70px;
+  padding-bottom: 50px;
+}
+
+.restart {
+  display: block;
+  margin-top:10px;
+  width:300px;
+  border-radius: 25px;
+}
+
+.right {
+  border-radius: 0px 25px 25px 0px;
+}
+
+.left {
+  border-radius: 25px 0px 0px 25px;
+}
+
+.bottom-container {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.game-container {
+  background-image: url(assets/blackboard.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+#easy{
+  margin-left:75px ;
+}
+
+.level-container-end {
+  margin-top: 10px;
+}
+
+.level {
+  width:100px;
+}
+
+.level-text {
+  text-align: center;
+  color: #4169E1;
+  display: block;
+  font-size: 24px;
+}
+
+.end-screen {
+  margin: 0 auto;
+  z-index: 1000;
+  position: fixed;
+  left: 35%;
+  top: 250px;
+  width: 450px;
+  height: 200px;
+  background-color: white;
+  border-radius: 10px;
+}
+
+.display {
+  display: none;
+}
+
+.end {
+  margin: 0 auto;
+  text-align: center;
+}
+
+.display-gray {
+  z-index: 100;
+  background-color: rgba(0,0,0,0.3);;
+}
+
+.selected {
+  border: 3px solid #4169E1;
+  color: #4169E1;
+  background-color: white;
+}
+
+.name {
+  color: white;
+  text-align: center;
+  background-color: #4169E1;
+  padding: 20px;
+  font-size: 18px;
+  border-radius: 25px;
+  top: -30px;
+  margin-left: 20px;
+  position : relative;
+}
+
+.profile {
+ width: 80px;
+ margin-top: 10px;
+}
+
+.profile-container {
+ text-align: center;
+ display: block;
+}
