@@ -37,19 +37,6 @@ const controller = (function() {
     display.displayBoard();
   }
 
-  function resultCounter(result) {
-    let playerResult = 0;
-    let computerResult = 0;
-    if (result === 'Won'){
-      playerResult++
-    } else if (result === 'Loose'){
-      computerResult++;
-    } else if (result === 'Tie'){
-      playerResult++;
-      computerResult++;
-    }
-  }
-
   function setNextLevelStatus(event) {
     display.displaySelectBorder(event.target);
     nextGameLevel = event.target.dataset.level;
@@ -57,7 +44,6 @@ const controller = (function() {
 
   return {
     startNewGame,
-    resultCounter,
   };
 
 }());

@@ -61,15 +61,12 @@ const display = (function(){
     const h2 = document.querySelector('h2');
     if (game.isAnyOneWon() && winner ===PLAYER){
       h2.textContent = 'You won';
-      controller.resultCounter('Won');
     }
     else if (game.isAnyOneWon() && winner === COMPUTER){
       h2.textContent = 'You loose';
-      controller.resultCounter('Loose');
     }
     else {
       h2.textContent = 'Game is Tie';
-      controller.resultCounter('Tie');
     }
     showPopUpWindow();
   }
@@ -80,5 +77,6 @@ const display = (function(){
     displaySelectBorder,
     showMessage,
     showPopUpWindow,
+
   };
 }());
