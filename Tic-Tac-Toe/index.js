@@ -1,17 +1,5 @@
-'use strict';
-
-const EMPTY = 0;
-const COMPUTER = 1;
-const PLAYER = 5;
-const ENDGAME = 10;
-var playerNext = 1;
-var level = 'easy';
-var nextGameLevel = 'easy';
-var board = data.getEmptyBoard();
-data.checkLocalStorage();
-display.displayBoard();
-
-const controller = (function() {
+const mainController = (function() {
+  'use strict';
 
   const table = document.querySelector('table');
   const restart = document.querySelector('.restart');
@@ -47,3 +35,6 @@ const controller = (function() {
   };
 
 }());
+
+data.checkState();
+display.displayBoard();

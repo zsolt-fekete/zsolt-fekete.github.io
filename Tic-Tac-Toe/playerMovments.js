@@ -1,17 +1,14 @@
-'use strict';
-
 const player = (function(){
+  'use strict';
 
   function click(event){
-    if (game.isTheCellFree(event) && (game.checkNextPlayer() === PLAYER)){
-      board[event.target.id] = PLAYER;
-      data.saveChangestoLocalStorage();
-      display.displayCell(event.target.id, PLAYER);
-      playerNext++;
-      if (game.isAnyOneWon() || game.isTheGameTie()){
-        return display.showMessage(PLAYER);
+    if (!game.isTheFieldOccupied(event.target.id)) {
+      game.addField(event.target.id);
+      game.isFinished();
+      if (data.gameStatus.status === 1) {
+        data.gameStatus.turn = data.players.computer.name;
+        computer.run();
       }
-      computer.run();
     }
   }
 

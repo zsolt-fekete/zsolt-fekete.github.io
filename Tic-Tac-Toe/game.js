@@ -1,68 +1,74 @@
-'use strict';
-
 const game = (function() {
+  'use strict';
 
-  function checkNextPlayer() {
-    let next = '';
-    if (playerNext % 2 === 0){
-      next = COMPUTER;
-    } else {
-      next = PLAYER;
+  let isTheFieldOccupied = (field) => {
+    return data.gameStatus.fields.includes(field);
+  }
+
+  let isFinished = () => {
+    if (isAnyOneWon()) {
+      setWinner()
     }
-    return next;
-  }
-
-  function isTheCellFree(event){
-    return event.target.dataset.owner == EMPTY ;
-  }
-
-  function isAnyOneWon() {
-    return (checkDiagonals() || checkRows() || checkColumns());
-  }
-
-  function isTheGameTie() {
-    return playerNext === ENDGAME;
-  }
-
-  function checkDiagonals() {
-    let result = false;
-    if (board.a1 !== EMPTY && board.a1 === board.b2  && board.a1 === board.c3) {
-      result = true;
-    } else if (board.a3 !== EMPTY && board.a3 === board.b2  && board.a3 === board.c1) {
-      result = true;
+    else if (isTheGameTie()) {
+      diplay.showTieMessage();
     }
-    return result;
+    else {
+      data.gameStatus.status = 1;
+    }
+  }
+
+  let addField = (id) => {
+    let field = {id: id, owner: data.gameStatus.turn}
+    data.gameStatus.fields.push(field);
+    data.saveState();
+    display.fillTheCell(field);
+  }
+
+  let setWinner = () => {
+    let winner = data.gameStatus.turn;
+    data.gameStatus.status = data.status[winner].stid;
+    diplay.showWinningMessage(data.status[winner].name);
+  }
+
+  let isAnyOneWon = () => {
+    if (checkDiagonals() || checkRows() || checkColumns()) {
+      return true;
+    };
+  }
+
+  let checkDiagonals = () => {
+    let topDiagonal = [11 , 22, 33];
+    let bottomDiagonal = [13 , 22, 31];
+    return (checkOptions(topDiagonal) || checkOptions(bottomDiagonal))
   };
 
-  function checkRows() {
-    let result = false;
-    if (board.a1 !== EMPTY && board.a1 === board.a2  && board.a1 === board.a3) {
-      result = true;
-    } else if (board.b1 !== EMPTY && board.b1 === board.b2  && board.b1 === board.b3) {
-      result = true;
-    } else if (board.c1 !== EMPTY && board.c1 === board.c2  && board.c1 === board.c3) {
-      result = true;
-    }
-    return result;
+  let checkRows = () => {
+    let ftRow = [11 , 12, 13];
+    let sdRow = [21 , 22, 23];
+    let tdRow = [31 , 32, 33];
+    return (checkOptions(ftRow) || checkOptions(sdRow) || checkOptions(tdRow));
   };
 
-  function checkColumns() {
-    let result = false;
-    if (board.a1 !== EMPTY && board.a1 === board.b1  && board.a1 === board.c1) {
-      result = true;
-    } else if (board.a2 !== EMPTY && board.a2 === board.b2  && board.a2 === board.c2) {
-      result = true;
-    } else if (board.a3 !== EMPTY && board.a3 === board.b3  && board.a3 === board.c3) {
-      result = true;
-    }
-    return result;
+  let checkColumns = () => {
+    let ftColumn = [11 , 21, 31];
+    let sdColumn = [12 , 22, 32];
+    let tdColumn = [13 , 23, 33];
+    return (checkOptions(ftColumn) || checkOptions(sdColumn) || checkOptions(tdColumn));
   };
+
+  let isTheGameTie = () => {
+    return data.gameStatus.fields.length === 9;
+  }
+
+  let checkOptions = (otherList) => {
+    let fieldsList = data.getFieldsList();
+    return fieldsList.every((field) => otherList.includes(field));
+  }
 
   return {
-    isAnyOneWon,
-    checkNextPlayer,
-    isTheGameTie,
-    isTheCellFree,
+    addField,
+    isFinished,
+    isTheFieldOccupied,
   };
 
 }());
